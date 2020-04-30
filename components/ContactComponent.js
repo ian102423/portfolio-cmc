@@ -20,11 +20,8 @@ class Contact extends Component {
                     <Text>
                         Seattle, WA 98001
                     </Text>
-                    <Text>
-
+                    <Text style={{ marginBottom: 10 }}>
                         U.S.A.
-                    </Text>
-                    <Text>
                     </Text>
                     <Text>
                         Phone: 1-206-555-1234
