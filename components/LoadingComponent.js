@@ -5,7 +5,7 @@ function Loading() {
     return (
         <View style={styles.loadingView} >
             <ActivityIndicator size='large' color='#5637DD' />
-            <Texgitt style={styles.loadingText}>Loading . . .</Texgitt>
+            <Text style={styles.loadingText}>Loading . . .</Text>
         </View>
     );
 }
