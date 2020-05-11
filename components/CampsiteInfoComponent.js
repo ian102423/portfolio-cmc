@@ -27,7 +27,9 @@ function RenderCampsite(props) {
 
     const recognizeDrag = ({ dx }) => (dx < -200) ? true : false;
 
-    const panResponder = PanResponder.create({
+    const recognizeComment = ({ dx }) => (dx > 200) ? true : false;
+
+    const panResponder = PanResponder.create({ // 2 auto pass arguments: event, gestureState
         onStartShouldSetPanResponder: () => true,
         onPanResponderGrant: () => {
             view.current.rubberBand(1000) // rubberBand animation
@@ -53,6 +55,8 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
+            } else if (recognizeComment(gestureState)) {
+                props.onShowModal();
             }
             return true;
         }
@@ -111,11 +115,11 @@ function RenderComments({ comments }) {
                 />
                 <Text style={{ fontSize: 12 }}>{`-- ${item.author}, ${item.date}`}</Text>
             </View>
-        )
-    }
+        );
+    };
 
     return (
-        <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
+        <Animatable.View animation='fadeInUp' duration={2000} delay={1000}>
             <Card title='Comments'>
                 <FlatList
                     data={comments}
@@ -124,7 +128,7 @@ function RenderComments({ comments }) {
                 />
             </Card>
         </Animatable.View>
-    )
+    );
 }
 
 class CampsiteInfo extends Component { //******/
@@ -132,6 +136,7 @@ class CampsiteInfo extends Component { //******/
     constructor(props) {
         super(props);
         this.state = {
+            favotie: false,
             showModal: false,
             rating: 5,
             author: '',
