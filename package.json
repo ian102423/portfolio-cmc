@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "expo": "~37.0.3",
+    "expo-permissions": "7.0.0",
     "expo-secure-store": "7.0.0",
     "g": "^2.0.1",
     "global": "^4.4.0",
