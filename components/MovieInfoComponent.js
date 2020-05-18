@@ -12,20 +12,20 @@ import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites,
+        movies: state.movies,
         comments: state.comments,
         favorites: state.favorites
     }
 }
 
 const mapDispatchToProps = {
-    postFavorite: campsiteId => (postFavorite(campsiteId)),
-    postComment: (campsiteId, rating, author, text) => { postComment(campsiteId, rating, author, text) }
+    postFavorite: movieId => (postFavorite(movieId)),
+    postComment: (movieId, rating, author, text) => { postComment(movieId, rating, author, text) }
 };
 
-function RenderCampsite(props) {
+function RenderMovie(props) {
 
-    const { campsite } = props;
+    const { movie } = props;
 
     const view = React.createRef(); // ex) giving id attribute to html
 
@@ -44,7 +44,7 @@ function RenderCampsite(props) {
             if (recognizeDrag(gestureState)) {
                 Alert.alert(
                     'Add Favorite',
-                    'Are you sure you wish to add ' + campsite.name + ' to favorites?',
+                    'Are you sure you wish to add ' + movie.name + ' to favorites?',
                     [
                         {
                             text: 'Cancel',
@@ -66,7 +66,7 @@ function RenderCampsite(props) {
         }
     });
 
-    const shareCampsite = (title, message, url) => {
+    const shareMovie = (title, message, url) => {
         Share.share({
             title: title,
             message: `${title}: ${message} ${url}`,
@@ -76,14 +76,14 @@ function RenderCampsite(props) {
         });
     };
 
-    if (campsite) {
+    if (movie) {
         return (
             <Animatable.View animation='fadeInDown' duration={2000} delay={1000} ref={view} {...panResponder.panHandlers}>
                 <Card
-                    featuredTitle={campsite.name}
-                    image={{ uri: baseUrl + campsite.image }}>
+                    featuredTitle={movie.name}
+                    image={{ uri: baseUrl + movie.image }}>
                     <Text style={{ margin: 10 }}>
-                        {campsite.description}
+                        {movie.description}
                     </Text>
                     <View style={styles.cardRow}>
                         <Icon
@@ -111,7 +111,7 @@ function RenderCampsite(props) {
                             style={styles.cardItem}
                             raised
                             reverse
-                            onPress={() => shareCampsite(campsite.name, campsite.description, baseUrl + campsite.image)}
+                            onPress={() => shareMovie(movie.name, movie.description, baseUrl + movie.image)}
                         />
                     </View>
                 </Card>
@@ -154,7 +154,7 @@ function RenderComments({ comments }) {
     );
 }
 
-class CampsiteInfo extends Component { //******/
+class MovieInfo extends Component { //******/
 
     constructor(props) {
         super(props);
@@ -167,21 +167,21 @@ class CampsiteInfo extends Component { //******/
         }
     }
 
-    markFavorite(campsiteId) {
-        this.props.postFavorite(campsiteId);
+    markFavorite(movieId) {
+        this.props.postFavorite(movieId);
     }
 
     static navigationOptions = {
-        title: 'Campsite Information'
+        title: 'Movie Information'
     };
 
     toggleModal() {
         this.setState({ showModal: !this.state.showModal });
     }
 
-    handleComment(campsiteId) {
+    handleComment(movieId) {
         const { rating, author, text } = this.state;
-        this.props.postComment(campsiteId, rating, author, text);
+        this.props.postComment(movieId, rating, author, text);
         this.toggleModal();
     }
 
@@ -194,14 +194,14 @@ class CampsiteInfo extends Component { //******/
     }
 
     render() {
-        const campsiteId = this.props.navigation.getParam('campsiteId');
-        const campsite = this.props.campsites.campsites.filter(campsite => campsite.id === campsiteId)[0];
-        const comments = this.props.comments.comments.filter(comment => comment.campsiteId === campsiteId);
+        const movieId = this.props.navigation.getParam('movieId');
+        const movie = this.props.movies.movies.filter(movie => movie.id === movieId)[0];
+        const comments = this.props.comments.comments.filter(comment => comment.movieId === movieId);
         return (
             <ScrollView>
-                <RenderCampsite campsite={campsite}
-                    favorite={this.props.favorites.includes(campsiteId)}
-                    markFavorite={() => this.markFavorite(campsiteId)}
+                <RenderMovie movie={movie}
+                    favorite={this.props.favorites.includes(movieId)}
+                    markFavorite={() => this.markFavorite(movieId)}
                     onShowModal={() => this.toggleModal()}
                 />
                 <RenderComments comments={comments} />
@@ -237,7 +237,7 @@ class CampsiteInfo extends Component { //******/
                                 title='Submit'
                                 color='#5637DD'
                                 onPress={() => {
-                                    this.handleComment(campsiteId);
+                                    this.handleComment(movieId);
                                     this.resetForm();
                                 }}
                             />
@@ -277,4 +277,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CampsiteInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

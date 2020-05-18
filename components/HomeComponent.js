@@ -7,7 +7,7 @@ import Loading from './LoadingComponent';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites,
+        movies: state.movies,
         promotions: state.promotions,
         partners: state.partners
     }
@@ -72,9 +72,9 @@ class Home extends Component {
         return (
             <Animated.ScrollView style={{ transform: [{ scale: this.state.scaleValue }] }}>
                 <RenderItem
-                    item={this.props.campsites.campsites.filter(campsite => campsite.featured)[0]}
-                    isLoading={this.props.campsites.isLoading}
-                    errMess={this.props.campsites.errMess}
+                    item={this.props.movies.movies.filter(movie => movie.featured)[0]}
+                    isLoading={this.props.movies.isLoading}
+                    errMess={this.props.movies.errMess}
                 />
                 <RenderItem
                     item={this.props.promotions.promotions.filter(promotion => promotion.featured)[0]}

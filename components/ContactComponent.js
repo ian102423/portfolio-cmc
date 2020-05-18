@@ -12,7 +12,7 @@ class Contact extends Component {
 
     sendMail() {
         MailComposer.composeAsync({
-            recipients: ['campsites@nucamp.co'],
+            recipients: ['movies@nucamp.co'],
             subject: 'Inquiry',
             body: 'To whom it may concern:'
         })
@@ -29,7 +29,7 @@ class Contact extends Component {
                         <Text>Seattle, WA 98001</Text>
                         <Text style={{ marginBottom: 10 }}>U.S.A.</Text>
                         <Text>Phone: 1-206-555-1234</Text>
-                        <Text>Email: campsites@nucamp.co</Text>
+                        <Text>Email: movies@nucamp.co</Text>
                         <Button
                             title="Send Email"
                             buttonStyle={{ backgroundColor: '#5637DD', margin: 40 }}

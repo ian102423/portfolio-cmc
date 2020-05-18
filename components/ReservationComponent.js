@@ -21,7 +21,7 @@ class Reservation extends Component {
     }
 
     static navigationOptions = {
-        title: 'Reserve Campsite'
+        title: 'Reserve Movie'
     }
 
     handleReservation() {
@@ -73,7 +73,7 @@ class Reservation extends Component {
         const permission = await this.obtainNotificationPermission();
         if (permission.status === 'granted') {
             Notifications.presentLocalNotificationAsync({
-                title: 'Your Campsite Reservation Search',
+                title: 'Your Movie Reservation Search',
                 body: 'Search for ' + date + ' requested'
             });
         }
@@ -135,7 +135,7 @@ class Reservation extends Component {
                         onPress={() => this.handleReservation()}
                         title='Search'
                         color='#5637DD'
-                        accessibilityLabel='Tap me to search for available campsites to reserve'
+                        accessibilityLabel='Tap me to search for available movies to reserve'
                     />
                 </View>
             </Animatable.View>

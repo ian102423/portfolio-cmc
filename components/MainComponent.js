@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Directory from './DirectoryComponent';
-import CampsiteInfo from './CampsiteInfoComponent';
+import MovieInfo from './MovieInfoComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import Favorites from './FavoritesComponent';
@@ -13,13 +13,13 @@ import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
 import {
-    fetchCampsites, fetchComments, fetchPromotions,
+    fetchMovies, fetchComments, fetchPromotions,
     fetchPartners
 } from '../redux/ActionCreators';
 import NetInfo from '@react-native-community/netinfo';
 
 const mapDispatchToProps = {
-    fetchCampsites,
+    fetchMovies,
     fetchComments,
     fetchPromotions,
     fetchPartners
@@ -38,7 +38,7 @@ const DirectoryNavigator = createStackNavigator(
                 />
             })
         },
-        CampsiteInfo: { screen: CampsiteInfo }
+        MovieInfo: { screen: MovieInfo }
     },
     {
         initialRouteName: 'Directory',
@@ -137,7 +137,7 @@ const ReservationNavigator = createStackNavigator(
                 color: '#fff'
             },
             headerLeft: <Icon
-                name='tree'
+                name='film'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -254,10 +254,10 @@ const MainNavigator = createDrawerNavigator(
         Reservation: {
             screen: ReservationNavigator,
             navigationOptions: {
-                drawerLabel: 'Reserve Campsite',
+                drawerLabel: 'Reserve Movie',
                 drawerIcon: ({ tintColor }) => (
                     <Icon
-                        name='tree'
+                        name='film'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
@@ -318,7 +318,7 @@ const MainNavigator = createDrawerNavigator(
 class Main extends Component {
 
     componentDidMount() {
-        this.props.fetchCampsites();
+        this.props.fetchMovies();
         this.props.fetchComments();
         this.props.fetchPromotions();
         this.props.fetchPartners();

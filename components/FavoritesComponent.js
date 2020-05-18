@@ -10,12 +10,12 @@ import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
-        campsites: state.campsites,
+        movies: state.movies,
         favorites: state.favorites
     };
 };
 
-const mapDispatchToProps = { deleteFavorite: campsiteId => (deleteFavorite(campsiteId)) };
+const mapDispatchToProps = { deleteFavorite: movieId => (deleteFavorite(movieId)) };
 
 class Favorites extends Component {
 
@@ -33,7 +33,7 @@ class Favorites extends Component {
                     onPress: () => {
                         Alert.alert(
                             'Delete Favorite?',
-                            'Are you sure you wish to delete the favorite campsite ' + item.name + '?',
+                            'Are you sure you wish to delete the favorite movie ' + item.name + '?',
                             [
                                 {
                                     text: 'Cancel',
@@ -58,27 +58,27 @@ class Favorites extends Component {
                             title={item.name}
                             subtitle={item.description}
                             leftAvatar={{ source: { uri: baseUrl + item.image } }}
-                            onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
+                            onPress={() => navigate('MovieInfo', { movieId: item.id })}
                         />
                     </Animatable.View>
                 </Swipeout>
             );
         };
 
-        if (this.props.campsites.isLoading) {
+        if (this.props.movies.isLoading) {
             return <Loading />;
         }
-        if (this.props.campsites.errMess) {
+        if (this.props.movies.errMess) {
             return (
                 <View>
-                    <Text>{this.props.campsites.errMess}</Text>
+                    <Text>{this.props.movies.errMess}</Text>
                 </View>
             );
         }
         return (
             <FlatList
-                data={this.props.campsites.campsites.filter(
-                    campsite => this.props.favorites.includes(campsite.id)
+                data={this.props.movies.movies.filter(
+                    movie => this.props.favorites.includes(movie.id)
                 )}
                 renderItem={renderFavoriteItem}
                 keyExtractor={item => item.id.toString()} // passing each item into a function && extract id from it
