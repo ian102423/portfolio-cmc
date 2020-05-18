@@ -1,20 +1,14 @@
 import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Directory from './DirectoryComponent';
+import CampsiteInfo from './CampsiteInfoComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
-import CampsiteInfo from './CampsiteInfoComponent';
-import Reservation from './ReservationComponent';
 import Favorites from './FavoritesComponent';
+import Reservation from './ReservationComponent';
 import Login from './LoginComponent';
-import {
-    View, Platform, StyleSheet, Text, ScrollView, Image,
-    Alert, ToastAndroid
-} from 'react-native';
-import {
-    createStackNavigator, createDrawerNavigator,
-    DrawerItems
-} from 'react-navigation';
+import { View, Platform, StyleSheet, Text, ScrollView, Image, Alert, ToastAndroid } from 'react-native';
+import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
@@ -312,10 +306,10 @@ const MainNavigator = createDrawerNavigator(
                     />
                 )
             }
-        }
+        },
     },
     {
-        initialRouteName: 'Home', // routing the first page
+        initialRouteName: 'Home',
         drawerBackgroundColor: '#CEC8FF',
         contentComponent: CustomDrawerContentComponent
     }
@@ -329,23 +323,27 @@ class Main extends Component {
         this.props.fetchPromotions();
         this.props.fetchPartners();
 
-        NetInfo.fetch().then(connectionInfo => { // netInfo library
-            (Platform.OS === 'ios') ?
-                Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
-                : ToastAndroid.show('Initial Network Connectivity Type: ' +
-                    connectionInfo.type, ToastAndroid.LONG);
-        });
+        this.showNetInfo();
 
-        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => { // remember, addEventListener === unsubscribe
+        this.unsubscribeNetInfo = NetInfo.addEventListener(connectionInfo => {
             this.handleConnectivityChange(connectionInfo);
         });
+    }
+
+    showNetInfo = async () => {
+        const connectionInfo = await NetInfo.fetch();
+        (Platform.OS === 'ios') ?
+            Alert.alert('Initial Network Connectivity Type:', connectionInfo.type)
+            : ToastAndroid.show('Initial Network Connectivity Type: ' +
+                connectionInfo.type, ToastAndroid.LONG);
+        console.log(connectionInfo);
     }
 
     componentWillUnmount() {
         this.unsubscribeNetInfo();
     }
 
-    handleConnectivityChange = connectionInfo => { // this will change depend on connection type
+    handleConnectivityChange = connectionInfo => {
         let connectionMsg = 'You are now connected to an active network.';
         switch (connectionInfo.type) {
             case 'none':
@@ -365,10 +363,12 @@ class Main extends Component {
             : ToastAndroid.show(connectionMsg, ToastAndroid.LONG);
     }
 
-
     render() {
         return (
-            <View style={{ flex: 1, paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight }}>
+            <View style={{
+                flex: 1,
+                paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
+            }}>
                 <MainNavigator />
             </View>
         );
