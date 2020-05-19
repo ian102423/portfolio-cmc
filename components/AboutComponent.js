@@ -14,9 +14,9 @@ const mapStateToProps = state => {
 
 function Mission() {
     return (
-        <Card title='Our Mission'>
+        <Card title='Who We Are'>
             <Text style={{ margin: 10 }}>
-                We present a curated database of the best movies in the vast woods and backcountry of the World Wide Web Wilderness. We increase access to adventure for the public while promoting safe and respectful use of resources. The expert wilderness trekkers on our staff personally verify each movie to make sure that they are up to our standards. We also present a platform for campers to share reviews on movies they have visited with each other.
+                CMC Theatres is an American movie theater chain headquartered in Nashville, TN, and is the largest movie theater chain in the world. Founded in 1920, CMC has the largest share of the U.S. theater market ahead of TNWORK and Cinemark Theatres.
             </Text>
         </Card>
     )

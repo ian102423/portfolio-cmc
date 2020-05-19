@@ -28,8 +28,8 @@ class Reservation extends Component {
         console.log(JSON.stringify(this.state));
         Alert.alert(
             'Begin Search?',
-            'Number of Campers: ' + this.state.campers + "\n" + "\n" +
-            'Hike-In? ' + this.state.hikeIn + "\n" + "\n" +
+            'Number of People in Group: ' + this.state.campers + "\n" + "\n" +
+            'Dine-In? ' + this.state.hikeIn + "\n" + "\n" +
             'Date: ' + this.state.date,
             [
                 {
@@ -83,7 +83,7 @@ class Reservation extends Component {
         return (
             <Animatable.View animation='zoomIn' duration={2000} delay={1000}>
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Number of Campers</Text>
+                    <Text style={styles.formLabel}>Number of People in Group</Text>
                     <Picker
                         style={styles.formItem}
                         selectedValue={this.state.campers}
@@ -97,7 +97,7 @@ class Reservation extends Component {
                     </Picker>
                 </View>
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Hike-In?</Text>
+                    <Text style={styles.formLabel}>Dine-In?</Text>
                     <Switch
                         style={styles.formItem}
                         value={this.state.hikeIn}
@@ -134,7 +134,7 @@ class Reservation extends Component {
                     <Button
                         onPress={() => this.handleReservation()}
                         title='Search'
-                        color='#5637DD'
+                        color='#c9a47a'
                         accessibilityLabel='Tap me to search for available movies to reserve'
                     />
                 </View>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#5637DD',
         textAlign: 'center',
         color: '#fff',
-        marginBottom: 20
+        marginBottom: 10
     },
     modalText: {
         fontSize: 18,

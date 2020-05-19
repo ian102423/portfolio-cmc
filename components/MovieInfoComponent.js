@@ -89,7 +89,7 @@ function RenderMovie(props) {
                         <Icon
                             name={props.favorite ? 'heart' : 'heart-o'}
                             type='font-awesome'
-                            color='#f50'
+                            color='#f90015'
                             raised
                             reverse
                             onPress={() => props.favorite ?
@@ -99,7 +99,7 @@ function RenderMovie(props) {
                             style={styles.cardItem}
                             name={'pencil'}
                             type='font-awesome'
-                            color='#5637DD'
+                            color='#c9a47a'
                             raised
                             reverse
                             onPress={() => props.onShowModal()}
@@ -107,7 +107,7 @@ function RenderMovie(props) {
                         <Icon
                             name={'share'}
                             type='font-awesome'
-                            color='#5637DD'
+                            color='#c9a47a'
                             style={styles.cardItem}
                             raised
                             reverse
@@ -235,7 +235,7 @@ class MovieInfo extends Component { //******/
                         <View style={{ margin: 10 }}>
                             <Button
                                 title='Submit'
-                                color='#5637DD'
+                                color='#c9a47a'
                                 onPress={() => {
                                     this.handleComment(movieId);
                                     this.resetForm();

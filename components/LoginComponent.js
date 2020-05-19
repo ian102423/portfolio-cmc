@@ -94,7 +94,7 @@ class LoginTab extends Component {
                                 iconStyle={{ marginRight: 10 }}
                             />
                         }
-                        buttonStyle={{ backgroundColor: '#5637DD' }}
+                        buttonStyle={{ backgroundColor: '#c9a47a' }}
                     />
                 </View>
                 <View style={styles.formButton}>
@@ -106,11 +106,11 @@ class LoginTab extends Component {
                             <Icon
                                 name='user-plus'
                                 type='font-awesome'
-                                color='blue'
+                                color='#c9a47a'
                                 iconStyle={{ marginRight: 10 }}
                             />
                         }
-                        titleStyle={{ color: 'blue' }}
+                        titleStyle={{ color: '#c9a47a' }}
                     />
                 </View>
             </View>
@@ -202,18 +202,15 @@ class RegisterTab extends Component {
             <ScrollView>
                 <View style={styles.container}>
                     <View style={styles.imageContainer}>
-                        <Image
-                            source={{ uri: this.state.imageUrl }}
-                            loadingIndicatorSource={require('./images/logo.png')}
-                            style={styles.image}
-                        />
                         <Button
                             title='Camera'
                             onPress={this.getImageFromCamera}
+                            buttonStyle={{ backgroundColor: '#c9a47a' }}
                         />
                         <Button
                             title='Gallery'
                             onPress={this.getImageFromGallery}
+                            buttonStyle={{ backgroundColor: '#c9a47a' }}
                         />
                     </View>
                     <Input
@@ -262,6 +259,7 @@ class RegisterTab extends Component {
                         checked={this.state.remember}
                         onPress={() => this.setState({ remember: !this.state.remember })}
                         containerStyle={styles.formCheckbox}
+                        unCheckedColor='#c9a47a'
                     />
                     <View style={styles.formButton}>
                         <Button
@@ -275,7 +273,7 @@ class RegisterTab extends Component {
                                     iconStyle={{ marginRight: 10 }}
                                 />
                             }
-                            buttonStyle={{ backgroundColor: '#5637DD' }}
+                            buttonStyle={{ backgroundColor: '#c9a47a' }}
                         />
                     </View>
                 </View>
@@ -291,11 +289,11 @@ const Login = createBottomTabNavigator(
     },
     {
         tabBarOptions: {
-            activeBackgroundColor: '#5637DD',
-            inactiveBackgroundColor: '#CEC8FF',
+            activeBackgroundColor: '#c9a47a',
+            inactiveBackgroundColor: '#dbcab6',
             activeTintColor: '#fff',
             inactiveTintColor: '#808080',
-            labelStyle: { fontSize: 16 }
+            labelStyle: { fontSize: 15 }
         }
     }
 );
@@ -316,20 +314,22 @@ const styles = StyleSheet.create({
         backgroundColor: null
     },
     formButton: {
-        margin: 20,
-        marginRight: 40,
-        marginLeft: 40
+        margin: 5,
+        marginRight: 75,
+        marginLeft: 75
     },
     imageContainer: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        margin: 10
+        margin: 10,
+        marginLeft: 60,
+        marginRight: 60
     },
     image: {
-        width: 60,
-        height: 60
+        width: 50,
+        height: 50
     }
 });
 

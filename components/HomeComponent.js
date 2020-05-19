@@ -32,7 +32,7 @@ function RenderItem(props) {
                 featuredTitle={item.name}
                 image={{ uri: baseUrl + item.image }}>
                 <Text
-                    style={{ margin: 10 }}>
+                    style={{ margin: 15 }}>
                     {item.description}
                 </Text>
             </Card>

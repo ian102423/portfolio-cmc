@@ -44,11 +44,11 @@ const DirectoryNavigator = createStackNavigator(
         initialRouteName: 'Directory',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             }
         }
     }
@@ -61,11 +61,11 @@ const HomeNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='home'
@@ -84,11 +84,11 @@ const AboutNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='info-circle'
@@ -107,11 +107,11 @@ const ContactNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='address-card'
@@ -130,11 +130,11 @@ const ReservationNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='film'
@@ -153,11 +153,11 @@ const FavoritesNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='heart'
@@ -176,11 +176,11 @@ const LoginNavigator = createStackNavigator(
     {
         navigationOptions: ({ navigation }) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#000'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#c9a47a'
             },
             headerLeft: <Icon
                 name='sign-in'
@@ -202,10 +202,10 @@ const CustomDrawerContentComponent = props => (
                     <Image source={require('./images/logo.png')} style={styles.drawerImage} />
                 </View>
                 <View style={{ flex: 2 }}>
-                    <Text style={styles.drawerHeaderText}>NuCamp</Text>
+                    <Text style={styles.drawerHeaderText}>CMC CINEMA</Text>
                 </View>
             </View>
-            <DrawerItems {...props} />
+            <DrawerItems {...props} activeTintColor='#f90015' labelStyle={{color: '#ffffff'}}/>
         </SafeAreaView>
     </ScrollView>
 );
@@ -220,7 +220,7 @@ const MainNavigator = createDrawerNavigator(
                         name='sign-in'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -233,7 +233,7 @@ const MainNavigator = createDrawerNavigator(
                         name='home'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -246,7 +246,7 @@ const MainNavigator = createDrawerNavigator(
                         name='list'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -260,7 +260,7 @@ const MainNavigator = createDrawerNavigator(
                         name='film'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -274,7 +274,7 @@ const MainNavigator = createDrawerNavigator(
                         name='heart'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -288,7 +288,7 @@ const MainNavigator = createDrawerNavigator(
                         name='info-circle'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -302,7 +302,7 @@ const MainNavigator = createDrawerNavigator(
                         name='address-card'
                         type='font-awesome'
                         size={24}
-                        color={tintColor}
+                        color='#f90015'
                     />
                 )
             }
@@ -310,7 +310,7 @@ const MainNavigator = createDrawerNavigator(
     },
     {
         initialRouteName: 'Home',
-        drawerBackgroundColor: '#CEC8FF',
+        drawerBackgroundColor: 'rgba(0, 0, 0, 0.7)',
         contentComponent: CustomDrawerContentComponent
     }
 );
@@ -367,7 +367,7 @@ class Main extends Component {
         return (
             <View style={{
                 flex: 1,
-                paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight
+                paddingTop: Platform.OS === 'ios' ? 0 : Expo.Constants.statusBarHeight,
             }}>
                 <MainNavigator />
             </View>
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#5637DD',
+        backgroundColor: '#000',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -399,8 +399,11 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: '#c9a47a',
         fontSize: 24
+    },
+    text: {
+        color: '#f0f'
     }
 });
 
